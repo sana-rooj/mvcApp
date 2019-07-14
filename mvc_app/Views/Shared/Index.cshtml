@@ -1,0 +1,86 @@
+﻿
+
+@model mvc_app.Models.RegisteredUser
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link rel="StyleSheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+</head>
+
+
+<div class="container" align="center">
+    <div class="card bg-light">
+        <article class="card-body mx-auto" style="max-width: 400px;">
+            <h4 class="card-title mt-3 text-center">Create Account</h4>
+            <p class="text-center">Get started with your free account</p>
+            <form asp-action="Validate" asp-controller="Home" method="post" enctype="multipart/form-data">
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    </div>
+
+                    <input asp-for="Name" class="form-control" placeholder="Full name" type="text">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    </div>
+                    <input asp-for="email_address" class="form-control" placeholder="Email address" type="email">
+                    <span asp-validation-for="email_address" class="text-danger"></span>
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                    </div>
+                    <select class="custom-select" style="max-width: 120px;">
+                        <option selected="">+92</option>
+                        <option value="1">+92</option>
+                    </select>
+                    <input asp-for="phone_number" class="form-control" placeholder="Phone number" type="text">
+                    <span asp-validation-for="phone_number" class="text-danger"></span>
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+                    </div>
+                    <select asp-for="job_type" class="form-control">
+                        <option selected=""> Select job type</option>
+                        <option>Designer</option>
+                        <option>Manager</option>
+                        <option>Accounting</option>
+                    </select>
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input asp-for="password" class="form-control" placeholder="Create password" type="password">
+                    <span asp-validation-for="password" class="text-danger"></span>
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input asp-for="password" class="form-control" placeholder="Repeat password" type="password">
+                    <span asp-validation-for="password" class="text-danger"></span>
+                </div>
+                <div>
+                    <input asp-for="SelectedFile" type="file" class="btn btn-success btn-block" multiple />
+                    <button type="submit" class="btn btn-primary btn-block"> Validate  </button>
+                </div>
+            </form>
+            <br>
+            <br>
+            <br>
+            <form asp-action="MoveToTable" asp-controller="Home" method="post" enctype="multipart/form-data">
+                <button type="submit" class="btn btn-primary btn-block"> Table View  </button>
+            </form>
+
+        </article>
+    </div>
+</div>
+
+<br><br>

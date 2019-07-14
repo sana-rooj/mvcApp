@@ -1,0 +1,75 @@
+﻿@model IEnumerable<WebApiProject.Models.Order>
+
+@{
+    ViewData["Title"] = "ShowOrdersAsync";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ShowOrdersAsync</h2>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Order_Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total_Items)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total_Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total_Tax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total_Sum_Tax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order_Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total_Items)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total_Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total_Tax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total_Sum_Tax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order_Status)
+            </td>
+            <td>
+                @*<button type="button" class="btn btn-info" asp-controller="UserOrders" asp-action="GetOrderDetails" asp-route-OrderToShow="@item.Order_Id" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
+        <div id="demo" class="collapse">
+
+
+        </div>*@
+
+                @*<a asp-controller="UserOrders" asp-action="GetOrderDetails" asp-route-OrderToShow="@item.Order_Id" class="btn btn-primary">:</a>*@
+
+                <button class="btn-success" data-toggle="collapse" data-target="#demo" style="float:right;" onclick="location.href='@Url.Action("GetOrderDetails", "UserOrders",new {OrderToShow="@item.Order_Id" })'">Place Order</button>
+                <div id="demo" class="collapse">
+                    <p>
+
+                    i am here </p>
+
+                </div>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

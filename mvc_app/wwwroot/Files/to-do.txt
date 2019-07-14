@@ -1,0 +1,4 @@
+controller file
+api implementation
+for crud return type json,Httpresponsemsg
+postman tool(for testing request)

@@ -1,0 +1,91 @@
+﻿@model mvc_app.Models.UserModel
+
+@{
+    ViewData["Title"] = "userpage";
+
+
+}
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+<div class="container" style=" border: solid 1px;margin: 2%;padding: 2%;border-color: cornflowerblue;background: azure;" >
+
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="~/images/dummy (1).jpg" width="100" height="50" class="center-block" style="margin-top:5%;" />
+        </div>
+        <div class="col-sm-8 text-primary">
+            <h2 class="text-left">Please fill in the form </h2>
+        </div>
+    </div>
+    <br />
+    <br />
+    <form method="post" asp-controller="user" asp-action="PostUser" enctype="multipart/form-data">
+        <div class="row" style="display:block; margin:2% 0% 0% 10%;">
+            <div class="col-sm-4">
+
+                <h4 class="text-left text-primary ">Name </h4>
+            </div>
+            <div class="col-sm-8">
+
+                <input asp-for="Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row" style="display:block; margin:2% 0% 0% 10%;">
+            <div class="col-sm-4">
+                <h4 class="text-left text-primary ">Email</h4>
+            </div>
+            <div class="col-sm-8">
+                <input asp-for="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+
+            </div>
+            <br />
+
+            <div class="row" style="display:block; margin:2% 0% 0% 0%;">
+                <div class="col-sm-4">
+                    <h4 class="text-left text-primary ">Comments</h4>
+                </div>
+                <div class="col-sm-8">
+                    <textarea asp-for="Comments" rows="5" cols="20"></textarea>
+                    <span asp-validation-for="Comments" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row" style="display:block; margin:2% 0% 0% 0%;">
+                <div class="col-sm-4">
+                    <h4 class="text-left text-primary ">Choices</h4>
+                </div>
+                <div class="col-sm-8">
+                    <select asp-for="Choice">
+                        <option value="" hidden disabled selected></option>
+                        <option value="lilies">lilies</option>
+                        <option value="roses">roses</option>
+                        <option value="fillers">fillers</option>
+                    </select>
+                    <span asp-validation-for="Choice" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row" style="display:block; margin:2% 0% 0% 0%;">
+                <div class="col-sm-4">
+                    <h4 class="text-left text-primary ">Upload File</h4>
+                </div>
+                <div class="col-sm-8">
+                    <div class="col-sm-6"><input type="file" name="file" multiple/></div>
+                    <div class="col-sm-2">
+                      
+                    </div>
+                    
+                </div>
+            </div>
+            <Button type="submit" class="center-block btn-primary">Submit</Button>
+           
+
+
+          
+
+
+</form>
+</div>

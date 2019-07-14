@@ -1,0 +1,50 @@
+﻿@model mvc_app.Models.StudentRegisterationModel
+@{
+    ViewData["Title"] = "InputView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Undergraduate Degree Program</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        
+        <form asp-action="OutputView" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="name" class="control-label">Name:</label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="program" class="control-label">Program:</label>
+                <select asp-for="program" class="form-control">
+                    <option value="" hidden disabled selected>Select a Program</option>
+                    <option value="BS(CS)">BS(CS)</option>
+                    <option value="BS(EE)">BS(EE)</option>
+                    <option value="BBA">BBA</option>
+                </select>
+                <span asp-validation-for="program" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="detail" class="control-label">Details:</label>
+                <textarea asp-for="detail" rows="4" cols="50" class=" form-control"></textarea>
+                <span asp-validation-for="detail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">File Upload</label>
+                <input type="file" asp-for="file" class="btn btn-info" multiple />
+               
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default "> Create Record </button>
+            </div>
+        </form>
+       
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<WebApiProject.Models.Product>
+
+
+@{
+    ViewData["Title"] = "OrderMainPageAsync";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Order Here</h2>
+<button class="btn-danger btn-lg" style="float:right; margin:10px;" onclick="location.href='@Url.Action("ShowOrdersAsync", "UserOrders")'"><span class="glyphicon glyphicon-shopping-cart"></span>Confirm Order</button>
+<div style="float:right;">
+ 
+            <h4 class="text-left text-danger ">Order Status</h4>
+            <select id="status">
+                <option value="Complete">Complete</option>
+                <option value="Inprogress">Inprogress</option>
+
+            </select>
+        
+    
+</div>
+
+<div class="container center-block">
+    @foreach (var item in Model)
+    {
+        //  string srcdefine = "~/images/@item.Product_Name.jpg";
+        <div class="card col-sm-4" style="width: auto; margin:10px;">
+            <img class="card-img-top" src="~/images/Pasta.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@item.Product_Id</h5>
+                <p class="card-text">@item.Product_Des for Rs @item.Product_Price</p>
+                <a asp-controller="UserOrders" asp-action="GetproductsFromCart" asp-route-productId="@item.Product_Id" class="btn btn-primary">Add to cart</a>
+
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,9 @@
+Ways to add directives (found)
+Check for all the input fields (done)
+Use directive on more than one page. (done)
+Pros and cons of directives  (One Function for alot of code, can be confusing when another dev
+				looks at it). 
+Make your own directive to do something (done)
+
+https://www.w3schools.com/html/html_form_input_types.asp
+

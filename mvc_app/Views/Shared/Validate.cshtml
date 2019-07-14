@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewData["Title"] = "Validate";
+}
+
+@model mvc_app.Models.UserCollection
+
+<head><link rel="stylesheet" type="text/css" href="css/TableStyle.css" /></head>
+<body>
+<form asp-action="RegisterUser" asp-controller="Table">
+    <button type="submit" class="btn btn-success"> Register User </button>
+</form>
+<table class="container" id="myTable">
+    <thead>
+    <tr>
+        <th onclick="sortTable(0)">#</th>
+        <th onclick="sortTable(1)">Name</th>
+        <th onclick="sortTable(2)">Email Address</th>
+        <th onclick="sortTable(3)">Phone Number</th>
+        <th onclick="sortTable(4)">Job Type</th>
+        <th onclick="sortTable(5)">File Name</th>
+    </tr>
+    </thead>
+    <tbody id="myTableBody">
+    @{
+        int i = 0;
+        @foreach (var item in Model.Usercol)
+         {
+             i++;
+             <tr>
+                 <td>@i</td>
+                 <td>@item.Name</td>
+                 <td>@item.email_address</td>
+                 <td>@item.phone_number</td>
+                 <td>@item.job_type</td>
+                 <td><a asp-action="Download" asp-route-filename="@item.FileName">@item.FileName</a></td>
+                 <td><a asp-action="DeleteRecord" asp-controller="Table" asp-route-selectedid="@item.id">delete</a></td>
+                 <td><a asp-action="MoveToEdit" asp-controller="Table" asp-route-id="@item.id">edit</a></td>
+             </tr>
+
+         }
+    }
+
+    </tbody>
+</table>
+
+
+</body>
+<script>
+    function sortTable(n) {
+        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById("myTable");
+        switching = true;
+        dir = "asc";
+        while (switching) {
+            switching = false;
+            rows = table.rows;
+            for (i = 1; i < (rows.length - 1); i++) {
+                shouldSwitch = false;
+                x = rows[i].getElementsByTagName("TD")[n];
+                y = rows[i + 1].getElementsByTagName("TD")[n];
+                if (dir == "asc") {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else if (dir == "desc") {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                switchcount ++;
+            } else {
+                if (switchcount == 0 && dir == "asc") {
+                    dir = "desc";
+                    switching = true;
+                }
+            }
+        }
+    }
+
+</script>
+
+

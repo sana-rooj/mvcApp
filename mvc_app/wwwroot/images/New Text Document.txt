@@ -1,0 +1,7 @@
+Hello fahad,
+please find the attributes of my project's model class below for the database:
+ public string Name { get;set;}
+ public string Email {get;set; }
+ public string Comments {get;set; }
+ public string Choice { get; set; }
+ public string FileNames { get; set; }
